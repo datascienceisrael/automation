@@ -1,0 +1,18 @@
+{
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 3000,
+    "files.autoGuessEncoding": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "git.branchWhitespaceChar": "_",
+    "autoDocstring.docstringFormat": "google"
+    "remote.containers.defaultExtensions": [
+        "eamodio.gitlens",
+        "ms-python.python",
+        "Gruntfuggly.todo-tree",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "njpwerner.autodocstring",
+        "ms-pyright.pyright"
+    ]
+}

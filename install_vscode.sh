@@ -26,6 +26,7 @@ code --install-extension eamodio.gitlens
 code --install-extension Gruntfuggly.todo-tree
 code --install-extension njpwerner.autodocstring
 code --install-extension VisualStudioExptTeam.vscodeintellicode
-code --install-extension
+code --install-extension johnpapa.vscode-peacock
+code --install-extension ms-pyright.pyright
 # If you want vim bindings:
 # code --install-extension vscodevim.vim
