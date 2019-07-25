@@ -1,0 +1,8 @@
+# log files
+logs/
+# vscode project configuration
+.vscode/
+#pytest
+**/.pytest_cache
+# jupiter
+**/__pycache__
