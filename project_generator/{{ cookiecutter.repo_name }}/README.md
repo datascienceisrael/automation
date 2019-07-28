@@ -1,3 +1,54 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Git Structure](#git-structure)
+- [Project Name](#project-name)
+- [Project Overview](#project-overview)
+      - [Example](#example)
+- [Milestones](#milestones)
+      - [Example](#example-1)
+- [Project History](#project-history)
+      - [Data Diagnostics](#data-diagnostics)
+      - [Preprocessing](#preprocessing)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+
+# Git Structure
+-----
+
+```
+├── assets                   <--- Images embedded in the top-level README 
+├── configuration            <--- Docker configuration
+│   ├── config_example.py
+│   ├── docker
+│   │   └── Dockerfile
+│   └── README.md
+├── docs                     <--- Documentation, details in README
+│   └── README.md
+├── logs                     <--- Logs
+│   └── example.log
+├── README.md
+├── reports                  <--- Reports for Clients
+├── research                 <--- Research scripts/notebooks                
+│   └── eda
+│       └── example.ipynb
+├── scripts                  <--- Pipeline/ETL scripts
+├── src                      <--- Code, details in README
+│   ├── common
+│   └── README.md
+└── tests                    <--- testing code/data, details in README
+    ├── conftest.py
+    ├── data
+    ├── README.md
+    └── test_example.py
+```
+
+<br><br>
+
+
 # Project Name
 -----
 
