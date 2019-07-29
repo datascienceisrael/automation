@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Git Structure](#git-structure)
+- [Repository Structure](#repository-structure)
 - [Project Name](#project-name)
 - [Project Overview](#project-overview)
       - [Example](#example)
@@ -16,7 +16,7 @@
 
 
 
-# Git Structure
+# Repository Structure
 -----
 
 ```
