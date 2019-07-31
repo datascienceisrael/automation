@@ -6,7 +6,7 @@
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "git.branchWhitespaceChar": "_",
-    "autoDocstring.docstringFormat": "google"
+    "autoDocstring.docstringFormat": "google",
     "remote.containers.defaultExtensions": [
         "eamodio.gitlens",
         "ms-python.python",
