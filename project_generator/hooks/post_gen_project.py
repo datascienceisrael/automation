@@ -4,10 +4,12 @@ from typing import List, Dict
 
 def run_command(command: List[str]) -> str or None:
     """Run a (Linux) shell command.
+    Command template: ['command_name', 'options', 'arguments']
+    Command example: ['ls', '-l', '/path/to/folder']
 
     Args:
         command (List[str]): The command to run.
-        example: ['ls', '-l', '/path/to/folder']
+
 
     Returns:
         str or None: An error message if exists else None.
