@@ -25,7 +25,7 @@ def run_command(command: List[str]) -> bool:
     return True
 
 
-def build_input_message(optional_pkgs: Dict[int, str]) -> str:
+def build_pkg_installation_msg(optional_pkgs: Dict[int, str]) -> str:
     """Build a message that shows the user what recommended packges he or she
     is able to install in order to begin its project.
 
@@ -45,8 +45,8 @@ def build_input_message(optional_pkgs: Dict[int, str]) -> str:
     return msg
 
 
-def get_user_input(optional_pkgs: Dict[int, str],
-                   all_pkgs_key: int) -> List[str]:
+def get_user_packages(optional_pkgs: Dict[int, str],
+                      all_pkgs_key: int) -> List[str]:
     """Asks the user to choose python packages to install
     from a set of standard data science packages and create a list of what
     he chose.
@@ -60,7 +60,7 @@ def get_user_input(optional_pkgs: Dict[int, str],
     Returns:
         List[str]: The list of the user requested packages.
     """
-    msg = build_input_message(optional_pkgs)
+    msg = build_pkg_installation_msg(optional_pkgs)
     input_result = input(msg)
     input_result = [number for number in input_result.split()
                     if number.isdigit()]
@@ -68,6 +68,7 @@ def get_user_input(optional_pkgs: Dict[int, str],
     pkgs = []
 
     if all_pkgs_key in pkg_numbers:
+        del optional_pkgs[all_pkgs_key]
         pkgs.extend(optional_pkgs.values())
     else:
         for pkg_number in pkg_numbers:
@@ -85,22 +86,22 @@ def run_jupyter_server(run_jupyter_cmd: List[str]):
     """
     msg = f'If you want to run code in the interactive window of vscode,\n'\
         f'you need to start a jupyter server.\n'\
-        f'would you like to do so? (y\\n)'
-    flag = True
-    while(flag):
+        f'would you like to do so? (y\\n) '
+    usr_input = ''
+    while(usr_input != 'n' or usr_input != 'y'):
         usr_input = input(msg)
-        if usr_input.lower() == 'n':
-            break
-        elif usr_input.lower() == 'y':
+        if usr_input == 'y':
             print('Start jupyter server')
             result = run_command(run_jupyter_cmd)
             if not result:
                 print(f'cannot run jupyter server at the moment please try '
                       f'again manually')
                 break
-            flag = False
+            print('Jupyter server is running :)')
+        elif usr_input == 'n':
+            break
         else:
-            msg = 'Choose only y\\n'
+            msg = 'Choose only y\\n '
 
 
 def on_error(undo_commands: List[List[str]],
@@ -118,23 +119,23 @@ def on_error(undo_commands: List[List[str]],
         print(undo_cmd_msgs[i])
         result = run_command(cmd)
         if not result:
-            print('Undo installation failed please tru manually.')
+            print('Undo installation failed please try manually.')
             break
 
     print('Undo installation completed successfully.')
 
 
-upgrade_pip = ['pip', 'install', '--user', '--upgrade', 'pip']
+upgrade_pip = ['python3', '-m', 'pip', 'install', '--user', '--upgrade', 'pip']
 install_pipenv = ['pip', 'install', '-U', '--user', 'pipenv']
-create_venv = ['pipenv', '--three']
+create_venv = ['pipenv', '--python', '3.6']
 install_dev_pkgs = ['pipenv', 'install', '--dev',
                     'pytest', 'pytest-datadir', 'flake8', 'rope',
                     'autopep8']
 optional_pkgs = {1: 'numpy', 2: 'pandas', 3: 'matplotlib',
                  4: 'pyyaml', 5: 'spacy', 6: 'nltk', 7: 'seaborn', 8: 'all'}
-pkgs = get_user_input(optional_pkgs, 8)
+pkgs = get_user_packages(optional_pkgs, 8)
 install_pkgs_cmd = ['pipenv', 'install'] + pkgs
-install_jupiter_cmd = ['pipenv', 'install', 'jupyter']
+install_jupyter_cmd = ['pipenv', 'install', '--dev', 'jupyter']
 run_jupyter_cmd = ['pipenv', 'run', 'jupyter', 'notebook']
 
 uninstall_pipenv = ['pip', 'uninstall', '--user', 'pipenv']
