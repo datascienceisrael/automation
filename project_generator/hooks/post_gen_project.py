@@ -1,28 +1,9 @@
-import subprocess
-from typing import List, Dict
+"""A module that contains a script that automate the creation of a new project.
+"""
 
+from typing import Dict, List
 
-def run_command(command: List[str]) -> bool:
-    """Run a (Linux) shell command.
-    Command template: ['command_name', 'options', 'arguments']
-    Command example: ['ls', '-l', '/path/to/folder']
-
-    Args:
-        command (List[str]): The command to run.
-
-
-    Returns:
-        bool: boolean on success.
-    """
-    sub_proc = subprocess.Popen(command,
-                                stdout=subprocess.PIPE,
-                                stderr=subprocess.STDOUT)
-    stdout, stderr = sub_proc.communicate()
-    if stderr:
-        print(stderr)
-        return False
-
-    return True
+from project_generator.common import run_command
 
 
 def build_pkg_installation_msg(optional_pkgs: Dict[int, str]) -> str:
