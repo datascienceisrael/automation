@@ -12,7 +12,8 @@ Designed with and for data scientists, *DSG Automation Project* supplies a set
 of tools which help  
 automate complex missions of the every-day data science work.  
 From generating a new project, to create a dev environment with vscode and
-dockers *DSG Automation Project* is here to save the :earth_asia:.  
+dockers,  
+*DSG Automation Project* is here to save the :earth_asia:.  
 So take a look from time to time and see whats new.
 
 ## CookieCutter
