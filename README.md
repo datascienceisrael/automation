@@ -1,9 +1,18 @@
 # Welcome to DSG Automation Project
 
 - [Welcome to DSG Automation Project](#welcome-to-dsg-automation-project)
+  - [About](#about)
   - [CookieCutter](#cookiecutter)
-    - [**Installation**](#installation)
-    - [**Generating the Project**](#generating-the-project)
+    - [Installation](#installation)
+    - [Generating the Project](#generating-the-project)
+  
+## About
+
+Designed with and for data scientists, *DSG Automation Project* supplies a set of tools
+which help to automate complex missions of the every-day data science work.  
+From generating a new project,
+to create a dev environment with vscode and dockers *DSG Automation Project* is here to save the :earth_asia:.
+So take a look from time to time and see whats new.
 
 ## CookieCutter
 
@@ -11,9 +20,9 @@ CoockieCutter is a tool that can help you generate a new project.
 In this tutorial we will learn the following:
 
 - How to install cookie cutter
-- How to generate a new project from a predefind template on Github
+- How to generate a new project from a predefined template on Github
 
-### **Installation**
+### Installation
 
 In order to install CookieCutter run the following commands on your terminal:
 
@@ -25,7 +34,7 @@ pip install --user --upgrade cookiecutter
 > :warning: **Warning**: if you run into problems after updating pip close and reopen the terminal  
 and try to run the second command again.
 
-### **Generating the Project**
+### Generating the Project
 
 In order to generate a new project with cookiecutter by using a template on Github  
 use the following command:
@@ -39,7 +48,7 @@ When the project generation will be over cookiecutter will run a script that doe
 1. Install pipenv - A tool for managing python packsges
 2. Create a new virtual environment for the project
 3. Install python packages necessary for development:  
-   - `pytest` - a packge that help develop tests
+   - `pytest` - a package that help develop tests
    - `pytest-datadir` - a package that helps manage data for tests
    - `rope` - a python formatter from vscode
    - `autopep8` - a python formatter
