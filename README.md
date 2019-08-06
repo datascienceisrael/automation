@@ -22,7 +22,7 @@ python3 -m pip install --user --upgrade pip
 pip install --user --upgrade cookiecutter
 ```
 
-> **Warning**: if you run into problems after updating pip close and reopen the terminal  
+> :warning: **Warning**: if you run into problems after updating pip close and reopen the terminal  
 and try to run the second command again.
 
 ### **Generating the Project**
