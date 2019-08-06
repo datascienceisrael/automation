@@ -1,5 +1,10 @@
 # Welcome to DSG Automation Project
 
+- [Welcome to DSG Automation Project](#welcome-to-dsg-automation-project)
+  - [CookieCutter](#cookiecutter)
+    - [**Installation**](#installation)
+    - [**Generating the Project**](#generating-the-project)
+
 ## CookieCutter
 
 CoockieCutter is a tool that can help you generate a new project.  
