@@ -13,7 +13,6 @@ Cooki Cutter
     - How to generate a new project from a predefind template on github
 
 Coockie Cutter Installation
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to install Cookie Cutter run the following commands on your terminal:
-
