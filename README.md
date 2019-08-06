@@ -34,12 +34,13 @@ When the project generation will be over cookiecutter will run a script that doe
 1. Install pipenv - A tool for managing python packsges
 2. Create a new virtual environment for the project
 3. Install python packages necessary for development:  
-   - *pytest* - a packge that help develop tests
-   - *pytest-datadir* - a package that helps manage data for tests
-   - *rope* - a python formatter from vscode
-   - *autopep8* - a python formatter
-   - *flake8* - linter (a program that run static code analysis)
-   - *jupyter* - a package that create an interactive environment for data scientists
+   - `pytest` - a packge that help develop tests
+   - `pytest-datadir` - a package that helps manage data for tests
+   - `rope` - a python formatter from vscode
+   - `autopep8` - a python formatter
+   - `flake8` - linter (a program that run static code analysis)
+   - `jupyter` - a package that create an interactive environment for data scientists
+
 4. Ask you to choose which data science packages do you want to install from a predefined list.
 
 >For your convenience messages of the script progress will be printed into the terminal
