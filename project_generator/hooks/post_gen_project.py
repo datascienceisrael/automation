@@ -1,9 +1,31 @@
 """A module that contains a script that automate the creation of a new project.
 """
 
+import subprocess
 from typing import Dict, List
 
-from project_generator.common import run_command
+
+def run_command(command: List[str]) -> bool:
+    """Run a (Linux) shell command.
+    Command template: ['command_name', 'options', 'arguments']
+    Command example: ['ls', '-l', '/path/to/folder']
+
+    Args:
+        command (List[str]): The command to run.
+
+
+    Returns:
+        bool: boolean on success.
+    """
+    sub_proc = subprocess.Popen(command,
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.STDOUT)
+    stdout, stderr = sub_proc.communicate()
+    if stderr:
+        print(stderr)
+        return False
+
+    return True
 
 
 def build_pkg_installation_msg(optional_pkgs: Dict[int, str]) -> str:
@@ -27,7 +49,8 @@ def build_pkg_installation_msg(optional_pkgs: Dict[int, str]) -> str:
 
 
 def get_user_packages(optional_pkgs: Dict[int, str],
-                      all_pkgs_key: int) -> List[str]:
+                      all_pkgs_key: int,
+                      no_pkgs_key: int) -> List[str]:
     """Asks the user to choose python packages to install
     from a set of standard data science packages and create a list of what
     he chose.
@@ -37,6 +60,8 @@ def get_user_packages(optional_pkgs: Dict[int, str],
         packages names.
         all_pkgs_key (int): The key of the option 'all' in the packges
         dictionary.
+        no_pkgs_key (int): The key that refers to the option 'none' in the
+        packges dictionary.
 
     Returns:
         List[str]: The list of the user requested packages.
@@ -48,6 +73,8 @@ def get_user_packages(optional_pkgs: Dict[int, str],
     pkg_numbers = list(map(int, input_result))
     pkgs = []
 
+    if no_pkgs_key in pkg_numbers:
+        return []
     if all_pkgs_key in pkg_numbers:
         del optional_pkgs[all_pkgs_key]
         pkgs.extend(optional_pkgs.values())
@@ -57,32 +84,6 @@ def get_user_packages(optional_pkgs: Dict[int, str],
             pkgs.append(pkg)
 
     return pkgs
-
-
-def run_jupyter_server(run_jupyter_cmd: List[str]):
-    """Run jupyter server base on the user choice.
-
-    Args:
-        run_jupyter_cmd (List[str]): the command that runs jupyter server.
-    """
-    msg = f'If you want to run code in the interactive window of vscode,\n'\
-        f'you need to start a jupyter server.\n'\
-        f'would you like to do so? (y\\n) '
-    usr_input = ''
-    while(usr_input != 'n' or usr_input != 'y'):
-        usr_input = input(msg)
-        if usr_input == 'y':
-            print('Start jupyter server')
-            result = run_command(run_jupyter_cmd)
-            if not result:
-                print(f'cannot run jupyter server at the moment please try '
-                      f'again manually')
-                break
-            print('Jupyter server is running :)')
-        elif usr_input == 'n':
-            break
-        else:
-            msg = 'Choose only y\\n '
 
 
 def on_error(undo_commands: List[List[str]],
@@ -109,15 +110,14 @@ def on_error(undo_commands: List[List[str]],
 upgrade_pip = ['python3', '-m', 'pip', 'install', '--user', '--upgrade', 'pip']
 install_pipenv = ['pip', 'install', '-U', '--user', 'pipenv']
 create_venv = ['pipenv', '--python', '3.6']
-install_dev_pkgs = ['pipenv', 'install', '--dev',
-                    'pytest', 'pytest-datadir', 'flake8', 'rope',
-                    'autopep8']
+dev_packages = ['pytest', 'pytest-datadir', 'flake8', 'rope', 'autopep8',
+                'jupyter']
+install_dev_pkgs = ['pipenv', 'install', '--dev'] + dev_packages
 optional_pkgs = {1: 'numpy', 2: 'pandas', 3: 'matplotlib',
-                 4: 'pyyaml', 5: 'spacy', 6: 'nltk', 7: 'seaborn', 8: 'all'}
-pkgs = get_user_packages(optional_pkgs, 8)
+                 4: 'pyyaml', 5: 'spacy', 6: 'nltk', 7: 'seaborn', 8: 'all',
+                 9: 'none'}
+pkgs = get_user_packages(optional_pkgs, 8, 9)
 install_pkgs_cmd = ['pipenv', 'install'] + pkgs
-install_jupyter_cmd = ['pipenv', 'install', '--dev', 'jupyter']
-run_jupyter_cmd = ['pipenv', 'run', 'jupyter', 'notebook']
 
 uninstall_pipenv = ['pip', 'uninstall', '--user', 'pipenv']
 delete_venv = ['pipenv', '--rm']
@@ -127,10 +127,8 @@ delet_pipenv_files = ['rm', '-rf', 'Pipfile', 'Pipfile.lock']
 cmd_msgs = ['Upgrading pip',
             'Installing pipenv',
             'Initializing a new virtual environment',
-            f'Installing dev packages: flake8, autopep8, rope, pytest and '
-            f'pytest-datadir',
-            f'Installing the packages you asked for: {pkgs}',
-            'Installing jupyter']
+            f'Installing dev packages: {dev_packages}',
+            f'Installing the packages you asked for: {pkgs}']
 commands = [upgrade_pip,
             install_pipenv,
             create_venv,
@@ -151,4 +149,3 @@ for i, cmd in enumerate(commands):
         break
 
 print('installation completed successfully')
-run_jupyter_server(run_jupyter_cmd)
