@@ -15,4 +15,4 @@ In this tutorial we will learn the following:
         $ python3 -m pip install --user --upgrade pip
         $ pip install cookicutter
         ```
-    >   if you run into problems after updating pip close and reopen the termina
+    | **Warning**: if you run into problems after updating pip close and reopen the terminal
