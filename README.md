@@ -14,7 +14,7 @@ automate complex missions of the every-day data science work.
 From generating a new project, to create a dev environment with vscode and
 dockers,  
 *DSG Automation Project* is here to save the :earth_asia:.  
-So take a look from time to time and see whats new.
+So take a look from time to time and see what's new.
 
 ## CookieCutter
 
