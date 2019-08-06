@@ -8,15 +8,17 @@
   
 ## About
 
-Designed with and for data scientists, *DSG Automation Project* supplies a set of tools
-which help to automate complex missions of the every-day data science work.  
-From generating a new project,
-to create a dev environment with vscode and dockers *DSG Automation Project* is here to save the :earth_asia:.
+Designed with and for data scientists, *DSG Automation Project* supplies a set
+of tools which help automate complex missions of the every-day data science
+work.  
+From generating a new project, to create a dev environment with vscode and
+dockers  
+*DSG Automation Project* is here to save the :earth_asia:.  
 So take a look from time to time and see whats new.
 
 ## CookieCutter
 
-CoockieCutter is a tool that can help you generate a new project.  
+CookieCutter is a tool that can help you generate a new project.  
 In this tutorial we will learn the following:
 
 - How to install cookie cutter
@@ -31,21 +33,23 @@ python3 -m pip install --user --upgrade pip
 pip install --user --upgrade cookiecutter
 ```
 
-> :warning: **Warning**: if you run into problems after updating pip close and reopen the terminal  
-and try to run the second command again.
+> :warning: **Warning**: if you run into problems after updating pip close and
+reopen the terminal and try to run the second command again.
 
 ### Generating the Project
 
-In order to generate a new project with cookiecutter by using a template on Github  
-use the following command:
+In order to generate a new project with cookiecutter by using a template on
+Github use the following command:
 
 ```bash
-cookiecutter -o <destination folder> https://github.com/datascienceisrael/automation.git
+cookiecutter -o <destination folder>
+https://github.com/datascienceisrael/automation.git
 ```
 
-When the project generation will be over cookiecutter will run a script that does the following:
+When the project generation will be over cookiecutter will run a script that
+does the following:
 
-1. Install pipenv - A tool for managing python packsges
+1. Install pipenv - A tool for managing python packages
 2. Create a new virtual environment for the project
 3. Install python packages necessary for development:  
    - `pytest` - a package that help develop tests
@@ -53,8 +57,11 @@ When the project generation will be over cookiecutter will run a script that doe
    - `rope` - a python formatter from vscode
    - `autopep8` - a python formatter
    - `flake8` - linter (a program that run static code analysis)
-   - `jupyter` - a package that create an interactive environment for data scientists
+   - `jupyter` - a package that create an interactive environment for data
+   scientists
 
-4. Ask you to choose which data science packages do you want to install from a predefined list.
+4. Ask you to choose which data science packages do you want to install from a
+predefined list.
 
->For your convenience messages of the script progress will be printed into the terminal
+>For your convenience messages of the script progress will be printed into the
+terminal
