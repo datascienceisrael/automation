@@ -5,6 +5,7 @@
   - [CookieCutter](#cookiecutter)
     - [Installation](#installation)
     - [Generating the Project](#generating-the-project)
+    - [Next Step](#next-step)
   
 ## About
 
@@ -65,3 +66,18 @@ predefined list.
 
 >For your convenience messages of the script progress will be printed into the
 terminal
+
+### Next Step
+
+Go to your generated project folder and run the following command:
+
+```bash
+pipenv shell
+```
+
+That should activate your virtual environment.  
+Now you can run any python pipenv or jupyter command. For example, to run a new jupyter server enter the following command:
+
+```bash
+jupyter notebook
+```
