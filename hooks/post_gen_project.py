@@ -114,9 +114,10 @@ dev_packages = ['pytest', 'pytest-datadir', 'flake8', 'rope', 'autopep8',
                 'jupyter']
 install_dev_pkgs = ['pipenv', 'install', '--dev'] + dev_packages
 optional_pkgs = {1: 'numpy', 2: 'pandas', 3: 'matplotlib',
-                 4: 'pyyaml', 5: 'spacy', 6: 'nltk', 7: 'seaborn', 8: 'all',
-                 9: 'none'}
-pkgs = get_user_packages(optional_pkgs, 8, 9)
+                 4: 'pyyaml', 5: 'spacy', 6: 'nltk', 7: 'seaborn',
+                 8: 'scipy', 9: 'scikit-learn', 10: 'tqdm',  11: 'all',
+                 12: 'none'}
+pkgs = get_user_packages(optional_pkgs, 11, 12)
 install_pkgs_cmd = ['pipenv', 'install'] + pkgs
 
 uninstall_pipenv = ['pip', 'uninstall', '--user', 'pipenv']
