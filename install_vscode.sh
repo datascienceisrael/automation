@@ -30,3 +30,6 @@ code --install-extension johnpapa.vscode-peacock
 code --install-extension ms-pyright.pyright
 # If you want vim bindings:
 # code --install-extension vscodevim.vim
+
+# Copy User level settings file
+cp vscode_settings.json ~/.vscode/settings.json
