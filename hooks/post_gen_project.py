@@ -29,7 +29,7 @@ def run_command(command: List[str]) -> bool:
 
 
 def build_pkg_installation_msg(optional_pkgs: Dict[int, str]) -> str:
-    """Build a message that shows the user what recommended packges he or she
+    """Build a message that shows the user what recommended packages he or she
     is able to install in order to begin its project.
 
     Args:
@@ -56,12 +56,12 @@ def get_user_packages(optional_pkgs: Dict[int, str],
     he chose.
 
     Args:
-        optional_pkgs (Dict[int, str]): The dictonary that contains the
+        optional_pkgs (Dict[int, str]): The dictionary that contains the
         packages names.
-        all_pkgs_key (int): The key of the option 'all' in the packges
+        all_pkgs_key (int): The key of the option 'all' in the packages
         dictionary.
         no_pkgs_key (int): The key that refers to the option 'none' in the
-        packges dictionary.
+        packages dictionary.
 
     Returns:
         List[str]: The list of the user requested packages.
@@ -89,7 +89,7 @@ def get_user_packages(optional_pkgs: Dict[int, str],
 def on_error(undo_commands: List[List[str]],
              undo_cmd_msgs: List[str]):
     """Undo commands that run during installation by runing their
-    opposit commands.
+    opposite commands.
 
     Args:
         undo_commands (List[List[str]]): The list of commands that cancel the
@@ -122,7 +122,7 @@ install_pkgs_cmd = ['pipenv', 'install'] + pkgs
 
 uninstall_pipenv = ['pip', 'uninstall', '--user', 'pipenv']
 delete_venv = ['pipenv', '--rm']
-delet_pipenv_files = ['rm', '-rf', 'Pipfile', 'Pipfile.lock']
+delete_pipenv_files = ['rm', '-rf', 'Pipfile', 'Pipfile.lock']
 
 
 cmd_msgs = ['Upgrading pip',
@@ -135,11 +135,11 @@ commands = [upgrade_pip,
             create_venv,
             install_dev_pkgs,
             install_pkgs_cmd]
-undo_cmd_msgs = ['remove viretual environment',
+undo_cmd_msgs = ['remove virtual environment',
                  'delete pipenv files (Pipfile and Pipfile.lock)',
                  'Uninstall pipenv']
 undo_commands = [delete_venv,
-                 delet_pipenv_files,
+                 delete_pipenv_files,
                  uninstall_pipenv]
 
 for i, cmd in enumerate(commands):
