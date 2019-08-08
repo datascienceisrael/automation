@@ -13,6 +13,10 @@
         "Gruntfuggly.todo-tree",
         "VisualStudioExptTeam.vscodeintellicode",
         "njpwerner.autodocstring",
-        "ms-pyright.pyright"
+        "ms-pyright.pyright",
+        "PKief.material-icon-theme",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "johnpapa.vscode-peacock"
     ]
 }
