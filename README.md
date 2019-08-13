@@ -1,13 +1,19 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 # Welcome to DSG Automation Project
 
-- [Welcome to DSG Automation Project](#welcome-to-dsg-automation-project)
-  - [About](#about)
-  - [CookieCutter](#cookiecutter)
-    - [Installation](#installation)
-    - [Generating the Project](#generating-the-project)
-    - [Next Step](#next-step)
-  - [VSCoDocker](#vscodocker)
-  
+- [About](#about)
+- [CookieCutter](#cookiecutter)
+  - [Installation](#installation)
+  - [Generating the Project](#generating-the-project)
+  - [Next Step](#next-step)
+- [VSCoDocker](#vscodocker)
+  - [Description](#description)
+  - [Installation](#installation-1)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## About
 
 Designed with and for data scientists, *DSG Automation Project* supplies a set
@@ -86,4 +92,56 @@ jupyter notebook
 ## VSCoDocker
 
 Vscodocker is a project that will help you crate a new development environment with a finger snap.
+
+### Description
+
+Automation scripts are provided to allow users to easily setup important installations and configurations.  
+On completion, the user will have the following components installed:
+
+  1. **Visual Studio Code + Selected Extensions**: IDE, see [link](https://code.visualstudio.com/)
+  2. **Docker**: container platform [link](https://www.docker.com/)
+  3. **Docker-Compose**: multi-container Docker applications [link](https://docs.docker.com/compose/)
+  4. **pip**: package installer for Python [link](https://pypi.org/project/pip/)
+  5. **ssh-key**: for remote connection
+
+
+### Installation
+
+Clone automation repository.
+
+```bash
+$ git clone https://github.com/datascienceisrael/automation.git
+$ cd automation
+```
+
+Set proper permissions to execute the provided .sh scripts:
+
+```
+$ chmod +x *.sh
+```
+
+run `initial_config.sh`:
+
+```bash
+$ ./initial_config.sh
+```
+
+This step will install and configure vscode, docker, docker compose, pip (if not installed) and generate an ssh key pair. 
+
+**TODO: this section needs a re-write**
+
+> on the remote host
+> 
+> ```bash $ "sudo setfacl -m user:ACTUAL_USER_NAME:rw
+> /var/run/docker.sock" ```
+> 
+> and add the user's public key from the previous step to their
+> ~/.ssh/authorized_keys file
+> user should now be able to ssh to the remote without a password. 
+
+Finally,  to gain docker access from vscode execute `connect_remote_docker.sh`
+
+```bash
+$ ./connect_remote_docker.sh
+```
  
