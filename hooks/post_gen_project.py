@@ -108,7 +108,7 @@ def on_error(undo_commands: List[List[str]],
 
 
 upgrade_pip = ['python3', '-m', 'pip', 'install', '--user', '--upgrade', 'pip']
-install_pipenv = ['pip', 'install', '-U', '--user', 'pipenv']
+install_pipenv = ['pip', 'install', '--user', '--upgrade', 'pipenv']
 create_venv = ['pipenv', '--python', '3.6']
 dev_packages = ['pytest', 'pytest-datadir', 'flake8', 'rope', 'autopep8',
                 'jupyter']
