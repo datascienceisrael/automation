@@ -37,8 +37,8 @@ In this tutorial we will learn the following:
 In order to install CookieCutter run the following commands on your terminal:
 
 ```bash
-python3 -m pip install --user --upgrade pip
-pip install --user --upgrade cookiecutter
+$ python3 -m pip install --user --upgrade pip
+$ pip install --user --upgrade cookiecutter
 ```
 
 > :warning: **Warning**: if you run into problems after updating pip close and
@@ -50,7 +50,7 @@ In order to generate a new project with cookiecutter by using a template on
 Github use the following command:
 
 ```bash
-cookiecutter -o <destination folder>
+$ cookiecutter -o <destination folder>
 https://github.com/datascienceisrael/automation.git
 ```
 
@@ -79,14 +79,14 @@ terminal
 Go to your generated project folder and run the following command:
 
 ```bash
-pipenv shell
+$ pipenv shell
 ```
 
 That should activate your virtual environment.  
 Now you can run any python pipenv or jupyter command. For example, to run a new jupyter server enter the following command:
 
 ```bash
-jupyter notebook
+$ jupyter notebook
 ```
 
 ## VSCoDocker
