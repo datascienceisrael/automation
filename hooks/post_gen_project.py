@@ -128,8 +128,8 @@ delete_pipenv_files = ['rm', '-rf', 'Pipfile', 'Pipfile.lock']
 cmd_msgs = ['Upgrading pip',
             'Installing pipenv',
             'Initializing a new virtual environment',
-            f'Installing dev packages: {dev_packages}',
-            f'Installing the packages you asked for: {pkgs}']
+            'Installing dev packages: {}'.format(dev_packages),
+            'Installing the packages you asked for: {}'.format(pkgs)]
 commands = [upgrade_pip,
             install_pipenv,
             create_venv,
