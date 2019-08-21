@@ -39,11 +39,11 @@ def build_pkg_installation_msg(optional_pkgs: Dict[int, str]) -> str:
     Returns:
        str: The constructed message.
     """
-    msg = f'choose the numbers (space separated) of the packages you want to '\
-        f'install: \n'
+    msg = 'choose the numbers (space separated) of the packages you want to ' +
+        'install: \n'
 
     for (key, value) in optional_pkgs.items():
-        msg += f'{key}. {value}\n'
+        msg += '{}. {}\n'.format(key, value)
 
     return msg
 
