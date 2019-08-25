@@ -145,7 +145,7 @@ Finally, to gain docker access from vscode execute `connect_remote_docker.sh`
 $ ./connect_remote_docker.sh
 ```
 
-By the default, the script looks for `hosts.txt` and outputs the options in a dropdown menu.  
+By default, the script looks for `hosts.txt` and outputs the options in a dropdown menu.  
 If `hosts.txt` file does not exist, then it will explicitly prompt the user for the host IP.
 
  ![](assets/hosts_menu.gif)
