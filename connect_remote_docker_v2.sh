@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Install autossh if needed
 if ! dpkg -l | grep autossh > /dev/null
@@ -26,11 +26,12 @@ select opt in "${hosts[@]}" "Quit"; do
     msg="Setting up $opt connection"
     case "$REPLY" in
 
+# Technical Debt: growable dropdown menu according to input
     1 ) echo "$msg";;
     2 ) echo "$msg";;
     3 ) echo "$msg";;
 
-    $(( ${n_hosts}+1 )) ) echo "Goodbye!"; break;;
+    $(( ${n_hosts}+1 )) ) echo "Goodbye!"; exit;;
     *) echo "Invalid option. Try another one.";continue;;
 
     esac
