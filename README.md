@@ -144,4 +144,4 @@ Finally,  to gain docker access from vscode execute `connect_remote_docker.sh`
 ```bash
 $ ./connect_remote_docker.sh
 ```
- 
+ ![](assets/hosts_menu.gif)
