@@ -19,31 +19,31 @@
 # Repository Structure
 -----
 
-```
-├── assets                   <--- Images embedded in the top-level README 
-├── configuration            <--- Docker configuration
-│   ├── config_example.py
-│   ├── docker
-│   │   └── Dockerfile
-│   └── README.md
-├── docs                     <--- Documentation, details in README
-│   └── README.md
-├── logs                     <--- Logs
-│   └── example.log
-├── README.md
-├── reports                  <--- Reports for Clients
-├── research                 <--- Research scripts/notebooks                
-│   └── eda
-│       └── example.ipynb
-├── scripts                  <--- Pipeline/ETL scripts
-├── src                      <--- Code, details in README
-│   ├── common
-│   └── README.md
-└── tests                    <--- testing code/data, details in README
-    ├── conftest.py
-    ├── data
-    ├── README.md
-    └── test_example.py
+```diff
+      ├── assets                   <--- Images embedded in the top-level README 
+      ├── configuration            <--- Docker configuration
+      │   ├── config_example.py
+      │   ├── docker
+      │   │   └── Dockerfile
++     │   └── README.md
+      ├── docs                     <--- Documentation, details in README
++     │   └── README.md
+      ├── logs                     <--- Logs
+      │   └── example.log
++     ├── README.md
+      ├── reports                  <--- Reports for Clients
+      ├── research                 <--- Research scripts/notebooks                
+      │   └── eda
+      │       └── example.ipynb
+      ├── scripts                  <--- Pipeline/ETL scripts
+      ├── src                      <--- Code, details in README
+      │   ├── common
++     │   └── README.md
+      └── tests                    <--- testing code/data, details in README
+          ├── conftest.py
+          ├── data
++         ├── README.md
+          └── test_example.py
 ```
 
 <br><br>
