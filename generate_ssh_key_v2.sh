@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # constants
-TIMEOUT=1
+TIMEOUT=10
 MAX_RETRY=2
-HOSTS_FILE="conf/hosts.txt"
+HOSTS_FILE="conf/hosts.txt" #TODO change to file path
 
 while getopts 'h?s:u:' option; do
   case "$option" in
@@ -18,7 +18,7 @@ while getopts 'h?s:u:' option; do
        echo "$usage" >&2
        exit 1
        ;;
-    *) printf "illegal option: %s\n" "$OPTARG" >&2
+    *) printf "invalid option: %s\n" "$OPTARG" >&2
        echo "$usage" >&2
        exit 1
        ;;
@@ -35,7 +35,7 @@ create_hosts_menu ()
   echo "$title"
   PS3="$prompt "
 
-  select host in "$@" "Quit"; do
+  select host in "$@" "quit"; do
     msg="Setting up $host connection"
     if [ "$REPLY" -eq "$(($#+1))" ];
     then
@@ -46,7 +46,7 @@ create_hosts_menu ()
       echo "$msg"
       break;
     else
-      echo "Incorrect Input: Select a number 1-$(($#+1))"
+      echo "Incorrect Input: Select a number between 1-$(($#+1))"
     fi
   done
 }
@@ -113,8 +113,8 @@ fi
   echo "copying key to $target_host"
   ssh-copy-id -o ConnectTimeout=$TIMEOUT -i ~/.ssh/id_rsa.pub $target_host
 } || { # catch
-  try=1
-  while [ $try -le $MAX_RETRY ]
+  tries=1
+  while [ $tries -le $MAX_RETRY ]
   do
     read -p 'ssh-copy-failed, would you like to retry? [Y] ' retry
     if [[ $retry = "Y" ]]
@@ -124,7 +124,7 @@ fi
       target_host=$username@$ssh_host
       echo "copying key to $target_host"
       ssh-copy-id -o ConnectTimeout=$TIMEOUT -i ~/.ssh/id_rsa.pub $target_host
-      ((try++))
+      ((tries++))
     else
       echo 'Exiting...'
       exit
