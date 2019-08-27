@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # constants
-TIMEOUT=2
-MAX_RETRY=3
+TIMEOUT=1
+MAX_RETRY=2
 HOSTS_FILE="conf/hosts.txt"
 
 while getopts 'h?s:u:' option; do
@@ -67,8 +67,7 @@ prompt_for_user ()
 # get hostname from user
 prompt_for_host ()
 {
-  echo "please provide host name: "
-  read -p ssh_host
+  read -p "please provide host name: " ssh_host
 }
 
 # === ssh_host case 1: recieved host as [-s host_name]  ====
@@ -112,7 +111,7 @@ fi
 
 { # try
   echo "copying key to $target_host"
-  ssh-copy-id -i ~/.ssh/id_rsa.pub $target_host
+  ssh-copy-id -o ConnectTimeout=$TIMEOUT -i ~/.ssh/id_rsa.pub $target_host
 } || { # catch
   try=1
   while [ $try -le $MAX_RETRY ]
@@ -124,7 +123,7 @@ fi
       prompt_for_host
       target_host=$username@$ssh_host
       echo "copying key to $target_host"
-      ssh-copy-id -i ~/.ssh/id_rsa.pub $target_host
+      ssh-copy-id -o ConnectTimeout=$TIMEOUT -i ~/.ssh/id_rsa.pub $target_host
       ((try++))
     else
       echo 'Exiting...'
