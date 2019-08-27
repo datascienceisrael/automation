@@ -7,7 +7,7 @@ HOSTS_FILE="conf/hosts.txt" #TODO change to file path
 
 while getopts 'h?s:u:' option; do
   case "$option" in
-    h|\?) echo "$usage"
+    h|\?) echo "$usage" #TODO add documentation
        exit
        ;;
     s) ssh_host=${OPTARG}
