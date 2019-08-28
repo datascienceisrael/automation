@@ -14,6 +14,9 @@ where:
     -u  set username (on remote)"
 #------------------------------------------------
 
+# ssh timeout [Sec]
+TIMEOUT=10
+
 while getopts 'h?s:u:' option; do
   case "$option" in
     h|\?) echo "$usage"
@@ -62,9 +65,6 @@ else
   echo "$ssh_host selected"
 fi
 
-# Copy public key to remote server
-echo 'Copy ssh public key to authorized keys folder on the remote server'
-
 # === username case 1: recieved user as [-u username] ====
 if [[ -n $username ]]
 then
@@ -79,7 +79,7 @@ fi
 target_host=$username@$ssh_host
 
 echo "copying key to $target_host"
-ssh-copy-id -i ~/.ssh/id_rsa.pub $target_host
+ssh-copy-id -i -o ConnectTimeout=$TIMEOUT ~/.ssh/id_rsa.pub $target_host
 
 # Create tunnel
 echo 'Did you remeber to add read-write privilages on the docker sock?'
