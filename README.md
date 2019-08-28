@@ -60,12 +60,12 @@ does the following:
 1. Install pipenv - A tool for managing python packages
 2. Create a new virtual environment for the project
 3. Install python packages necessary for development:  
-   - `pytest` - a package that help develop tests
-   - `pytest-datadir` - a package that helps manage data for tests
-   - `rope` - a python formatter from vscode
-   - `autopep8` - a python formatter
-   - `flake8` - linter (a program that run static code analysis)
-   - `jupyter` - a package that create an interactive environment for data
+   - [pytest](https://pytest.org/en/latest/) - a package that help develop tests
+   - [pytest-datadir](https://github.com/gabrielcnr/pytest-datadir) - a package that helps manage data for tests
+   - [rope](https://github.com/python-rope/rope) - a python formatter from vscode
+   - [autopep8](https://github.com/hhatto/autopep8) - a python formatter
+   - [flake8](http://flake8.pycqa.org/en/latest/) - linter (a program that run static code analysis)
+   - [jupyter](https://jupyter.org/) - a package that create an interactive environment for data
    scientists
 
 4. Ask you to choose which data science packages do you want to install from a

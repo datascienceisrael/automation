@@ -19,18 +19,18 @@
 # Repository Structure
 -----
 
-```diff
+```
       ├── assets                   <--- Images embedded in the top-level README 
       ├── configuration            <--- Docker configuration
       │   ├── config_example.py
       │   ├── docker
       │   │   └── Dockerfile
-+     │   └── README.md
+      │   └── README.md
       ├── docs                     <--- Documentation, details in README
-+     │   └── README.md
+      │   └── README.md
       ├── logs                     <--- Logs
       │   └── example.log
-+     ├── README.md
+      ├── README.md
       ├── reports                  <--- Reports for Clients
       ├── research                 <--- Research scripts/notebooks                
       │   └── eda
@@ -38,11 +38,11 @@
       ├── scripts                  <--- Pipeline/ETL scripts
       ├── src                      <--- Code, details in README
       │   ├── common
-+     │   └── README.md
+      │   └── README.md
       └── tests                    <--- testing code/data, details in README
           ├── conftest.py
           ├── data
-+         ├── README.md
+          ├── README.md
           └── test_example.py
 ```
 
