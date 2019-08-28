@@ -1,13 +1,26 @@
 #!/bin/bash
+# -----------------------------------------------
+# [Data Science Group Ltd.]
+# https://www.datascience.co.il/
+#
+#
+SCRIPT=$(basename "$0")
+usage="$SCRIPT [-h] [-s 0.0.0.0] [-u dsg]
+
+where:
+    -h  show this help message and exit
+    -s  set ssh host value
+    -u  set username (on remote)"
+#------------------------------------------------
 
 # constants
 TIMEOUT=10
 MAX_RETRY=2
-HOSTS_FILE="conf/hosts.txt" #TODO change to file path
+HOSTS_FILE_PATH="conf/hosts.txt"
 
 while getopts 'h?s:u:' option; do
   case "$option" in
-    h|\?) echo "$usage" #TODO add documentation
+    h|\?) echo "$usage"
        exit
        ;;
     s) ssh_host=${OPTARG}
@@ -46,7 +59,7 @@ create_hosts_menu ()
       echo "$msg"
       break;
     else
-      echo "Incorrect Input: Select a number between 1-$(($#+1))"
+      echo "Invalid Input: Select a number between 1-$(($#+1))"
     fi
   done
 }
@@ -76,17 +89,17 @@ if [[ -n $ssh_host ]]
   echo "using user input for host"
 
 # === ssh_host case 2: hosts.txt exists (and size > 0) =====
-elif [ -s $HOSTS_FILE ]
+elif [ -s $HOSTS_FILE_PATH ]
   then
 
   # read file lines as array
-  mapfile -t hosts < $HOSTS_FILE
+  mapfile -t hosts < $HOSTS_FILE_PATH
   create_hosts_menu "${hosts[@]}"
   ssh_host=$host
 
 # === ssh_host case 3: manually prompt user for host ====
 else
-  echo "$HOSTS_FILE does not exist"
+  echo "$HOSTS_FILE_PATH does not exist"
   prompt_for_host
 fi
 
