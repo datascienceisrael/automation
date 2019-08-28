@@ -91,8 +91,8 @@ fi
   tries=1
   while [ $tries -le $MAX_RETRY ]
   do
-    read -p 'ssh-copy-failed, would you like to retry? [Y] ' retry
-    if [[ $retry = "Y" ]]
+    read -p 'ssh-copy-failed, would you like to retry? [y] ' retry
+    if [[ $retry = "y" ]]
       then
       prompt_for_user
       prompt_for_host
