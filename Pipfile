@@ -6,7 +6,6 @@ verify_ssl = true
 [dev-packages]
 autopep8 = "*"
 flake8 = "*"
-rope = "*"
 doc8 = "*"
 jupyter = "*"
 docutils = "*"
