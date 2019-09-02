@@ -139,9 +139,13 @@ This step will install and configure vscode, docker, docker compose, pip (if not
 > ~/.ssh/authorized_keys file
 > user should now be able to ssh to the remote without a password. 
 
-Finally,  to gain docker access from vscode execute `connect_remote_docker.sh`
+Finally, to gain docker access from vscode execute `connect_remote_docker.sh`
 
 ```bash
 $ ./connect_remote_docker.sh
 ```
- 
+
+By default, the script looks for `hosts.txt` and outputs the options in a dropdown menu.  
+If `hosts.txt` file does not exist, then it will explicitly prompt the user for the host IP.
+
+ ![](assets/hosts_menu.gif)
