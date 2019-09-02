@@ -3,14 +3,15 @@
 
 # Welcome to DSG Automation Project
 
-- [About](#about)
-- [CookieCutter](#cookiecutter)
-  - [Installation](#installation)
-  - [Generating the Project](#generating-the-project)
-  - [Next Step](#next-step)
-- [VSCoDocker](#vscodocker)
-  - [Description](#description)
-  - [Installation](#installation-1)
+- [Welcome to DSG Automation Project](#welcome-to-dsg-automation-project)
+  - [About](#about)
+  - [Protomator](#protomator)
+    - [Installation](#installation)
+    - [Generating the Project](#generating-the-project)
+    - [Next Step](#next-step)
+  - [VSCoDocker](#vscodocker)
+    - [Description](#description)
+    - [Installation](#installation-1)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -24,7 +25,7 @@ dockers,
 *DSG Automation Project* is here to save the :earth_asia:.  
 So take a look from time to time and see what's new.
 
-## CookieCutter
+## Protomator
 
 CookieCutter is a tool that can help you generate a new project.  
 In this tutorial we will learn the following:

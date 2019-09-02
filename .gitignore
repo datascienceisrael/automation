@@ -1,1 +1,4 @@
+#vs code
 /.vscode
+#jupyter
+**/.ipynb_checkpoints
