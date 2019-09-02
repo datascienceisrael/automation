@@ -1,13 +1,26 @@
 #!/bin/bash
+. ./utils.sh
+# -----------------------------------------------
+# [Data Science Group Ltd.]
+# https://www.datascience.co.il/
+#
+#
+SCRIPT=$(basename "$0")
+usage="$SCRIPT [-h] [-s 0.0.0.0] [-u dsg]
+
+where:
+    -h  show this help message and exit
+    -s  set ssh host value
+    -u  set username (on remote)"
+#------------------------------------------------
 
 # constants
 TIMEOUT=10
 MAX_RETRY=2
-HOSTS_FILE="conf/hosts.txt" #TODO change to file path
 
 while getopts 'h?s:u:' option; do
   case "$option" in
-    h|\?) echo "$usage" #TODO add documentation
+    h|\?) echo "$usage"
        exit
        ;;
     s) ssh_host=${OPTARG}
@@ -26,49 +39,11 @@ while getopts 'h?s:u:' option; do
 done
 shift $((OPTIND - 1))
 
-# auxilliary function to create dropdown menu according to file
-create_hosts_menu ()
-{
-  # user notifications
-  title="=== Host Selection ==="
-  prompt="Pick an option:"
-  echo "$title"
-  PS3="$prompt "
-
-  select host in "$@" "quit"; do
-    msg="Setting up $host connection"
-    if [ "$REPLY" -eq "$(($#+1))" ];
-    then
-      echo "Exiting..."
-      exit;
-    elif [ 1 -le "$REPLY" ] && [ "$REPLY" -le $(($#)) ];
-    then
-      echo "$msg"
-      break;
-    else
-      echo "Incorrect Input: Select a number between 1-$(($#+1))"
-    fi
-  done
-}
-
 # Install autossh if needed
 if ! dpkg -l | grep autossh > /dev/null
     then
     sudo apt-get install -y autossh
 fi
-
-# get username from user
-prompt_for_user ()
-{
-  read -p "Enter your remote username [$USER]: " username
-  username=${username:-$USER}
-}
-
-# get hostname from user
-prompt_for_host ()
-{
-  read -p "please provide host name: " ssh_host
-}
 
 # === ssh_host case 1: recieved host as [-s host_name]  ====
 if [[ -n $ssh_host ]]
@@ -76,17 +51,17 @@ if [[ -n $ssh_host ]]
   echo "using user input for host"
 
 # === ssh_host case 2: hosts.txt exists (and size > 0) =====
-elif [ -s $HOSTS_FILE ]
+elif [ -s $HOSTS_FILE_PATH ]
   then
 
   # read file lines as array
-  mapfile -t hosts < $HOSTS_FILE
+  mapfile -t hosts < $HOSTS_FILE_PATH
   create_hosts_menu "${hosts[@]}"
   ssh_host=$host
 
 # === ssh_host case 3: manually prompt user for host ====
 else
-  echo "$HOSTS_FILE does not exist"
+  echo "$HOSTS_FILE_PATH does not exist"
   prompt_for_host
 fi
 
@@ -116,8 +91,8 @@ fi
   tries=1
   while [ $tries -le $MAX_RETRY ]
   do
-    read -p 'ssh-copy-failed, would you like to retry? [Y] ' retry
-    if [[ $retry = "Y" ]]
+    read -p 'ssh-copy-failed, would you like to retry? [y] ' retry
+    if [[ $retry = "y" ]]
       then
       prompt_for_user
       prompt_for_host

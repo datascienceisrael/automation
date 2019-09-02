@@ -1,4 +1,5 @@
 #!/bin/bash
+. ./utils.sh
 # -----------------------------------------------
 # [Data Science Group Ltd.]
 # https://www.datascience.co.il/
@@ -12,6 +13,9 @@ where:
     -s  set ssh host value
     -u  set username (on remote)"
 #------------------------------------------------
+
+# ssh timeout [Sec]
+TIMEOUT=10
 
 while getopts 'h?s:u:' option; do
   case "$option" in
@@ -34,31 +38,6 @@ while getopts 'h?s:u:' option; do
 done
 shift $((OPTIND - 1))
 
-# auxilliary function to create dropdown menu according to file
-create_hosts_menu ()
-{
-  # user notifications
-  title="=== Host Selection ==="
-  prompt="Pick an option:"
-  echo "$title"
-  PS3="$prompt "
-
-  select host in "$@" "Quit"; do
-    msg="Setting up $host connection"
-    if [ "$REPLY" -eq "$(($#+1))" ];
-    then
-      echo "Exiting..."
-      exit;
-    elif [ 1 -le "$REPLY" ] && [ "$REPLY" -le $(($#)) ];
-    then
-      echo "$msg"
-      break;
-    else
-      echo "Incorrect Input: Select a number 1-$(($#+1))"
-    fi
-  done
-}
-
 # Install autossh if needed
 if ! dpkg -l | grep autossh > /dev/null
     then
@@ -75,38 +54,33 @@ elif [ -s $input_file ]
 then
 
   # read file lines as array
-  input_file="conf/hosts.txt"
-  mapfile -t hosts < $input_file
+  mapfile -t hosts < $HOSTS_FILE_PATH
   create_hosts_menu "${hosts[@]}"
   ssh_host=$host
 
 # === ssh_host case 3: manually prompt user for host ====
 else
   echo "$input_file does not exist, please provide host name: "
-  read ssh_host
+  prompt_for_host
   echo "$ssh_host selected"
 fi
 
-# Copy public key to remote server
-echo 'Copy ssh public key to authorized keys folder on the remote server'
-
-# username case 1: recieved user as [-u username] ====
+# === username case 1: recieved user as [-u username] ====
 if [[ -n $username ]]
 then
   echo "using user input for username"
-  target_host=$username@$ssh_host
 
-# username case 2: manually prompt user for username ====
+# === username case 2: manually prompt user for username ====
 else
-  read -p "Enter your remote username [$USER]: " username
-  username=${username:-$USER}
-  target_host=$username@$ssh_host
+  prompt_for_user
 fi
 
-echo "copying key to $target_host"
-ssh-copy-id -i ~/.ssh/id_rsa.pub $target_host
+# store user$host variable
+target_host=$username@$ssh_host
 
+echo "copying key to $target_host"
+ssh-copy-id -i -o ConnectTimeout=$TIMEOUT ~/.ssh/id_rsa.pub $target_host
 
 # Create tunnel
 echo 'Did you remeber to add read-write privilages on the docker sock?'
-autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -NL localhost:23750:/var/run/docker.sock $ssh_host &
+autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -NL localhost:23750:/var/run/docker.sock $target_host &
