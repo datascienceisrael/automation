@@ -1,4 +1,7 @@
 import sys
 
-if sys.version_info < (3, 6):
-    raise ImportError("Python 3.6 or greater is required")
+def check_version(major=3, minor=6):
+    if sys.version_info < (major, minor):
+        raise ImportError("Python {}.{} or greater is required".format(major, minor))
+
+check_version()
