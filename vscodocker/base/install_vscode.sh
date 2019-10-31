@@ -32,4 +32,4 @@ code --install-extension ms-pyright.pyright
 # code --install-extension vscodevim.vim
 
 # Copy User level settings file
-cp vscode_settings.json ~/.vscode/settings.json
+cp ../vscodocker/base/vscode_settings.json ~/.vscode/settings.json
