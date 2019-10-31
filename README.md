@@ -1,3 +1,4 @@
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -121,13 +122,13 @@ Set proper permissions to execute the provided .sh scripts:
 $ chmod +x *.sh
 ```
 
-run `initial_config.sh`:
+run `main.sh`:
 
 ```bash
-$ ./initial_config.sh
+$ ./main.sh
 ```
 
-This step will install and configure vscode, docker, docker compose, pip (if not installed) and generate an ssh key pair. 
+This step will install and configure vscode, docker, docker compose, pip (if not installed).
 
 **TODO: this section needs a re-write**
 
@@ -150,3 +151,4 @@ By default, the script looks for `hosts.txt` and outputs the options in a dropdo
 If `hosts.txt` file does not exist, then it will explicitly prompt the user for the host IP.
 
  ![](assets/hosts_menu.gif)
+
