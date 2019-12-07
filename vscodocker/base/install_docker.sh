@@ -3,6 +3,12 @@
 
 docker_apt="/etc/apt/sources.list.d/docker.list"
 
+# install curl (latest) if necessary
+if ! (($(curl -V) == 0))
+    then
+    sudo apt-get install -y curl
+fi
+
 if ! [[ -f $docker_apt ]]
     then
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
