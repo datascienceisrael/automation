@@ -79,7 +79,7 @@ fi
 target_host=$username@$ssh_host
 
 echo "copying key to $target_host"
-ssh-copy-id -i -o ConnectTimeout=$TIMEOUT ~/.ssh/id_rsa.pub $target_host
+ssh-copy-id -i -o ConnectTimeout=$TIMEOUT $target_host
 
 # Create tunnel
 echo 'Did you remeber to add read-write privilages on the docker sock?'
