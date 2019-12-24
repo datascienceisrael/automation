@@ -10,7 +10,7 @@ fi
 
 # Copy public key to remote server
 echo 'Copy ssh public key to authorized keys folder on the remote server'
-ssh-copy-id -i ~/.ssh/id_rsa.pub $ssh_host
+ssh-copy-id -i $ssh_host
 
 # Create tunnel
 echo 'Did you remeber to add read-write privilages on the docker sock?'
