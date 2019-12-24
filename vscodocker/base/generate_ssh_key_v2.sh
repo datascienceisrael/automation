@@ -86,7 +86,7 @@ fi
 
 { # try
   echo "copying key to $target_host"
-  ssh-copy-id -o ConnectTimeout=$TIMEOUT -i ~/.ssh/id_rsa.pub $target_host
+  ssh-copy-id -i -o ConnectTimeout=$TIMEOUT $target_host
 } || { # catch
   tries=1
   while [ $tries -le $MAX_RETRY ]
@@ -98,7 +98,7 @@ fi
       prompt_for_host
       target_host=$username@$ssh_host
       echo "copying key to $target_host"
-      ssh-copy-id -o ConnectTimeout=$TIMEOUT -i ~/.ssh/id_rsa.pub $target_host
+      ssh-copy-id -i -o ConnectTimeout=$TIMEOUT $target_host
       ((tries++))
     else
       echo 'Exiting...'
